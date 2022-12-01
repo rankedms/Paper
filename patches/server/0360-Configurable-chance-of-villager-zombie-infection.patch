@@ -8,10 +8,10 @@ This allows you to solve an issue in vanilla behavior where:
 * On normal difficulty they will have a 50% of getting infected or dying.
 
 diff --git a/src/main/java/net/minecraft/world/entity/monster/Zombie.java b/src/main/java/net/minecraft/world/entity/monster/Zombie.java
-index f0bad2264df3a4b4631d66dad46ec03470a206ee..23fe7c324b8faca954dbef1a5703db6a8763edf6 100644
+index f0bad2264df3a4b4631d66dad46ec03470a206ee..a72af197c2db55bffab49e0d4439c2a9bc9337df 100644
 --- a/src/main/java/net/minecraft/world/entity/monster/Zombie.java
 +++ b/src/main/java/net/minecraft/world/entity/monster/Zombie.java
-@@ -451,12 +451,16 @@ public class Zombie extends Monster {
+@@ -451,12 +451,8 @@ public class Zombie extends Monster {
      public boolean wasKilled(ServerLevel world, LivingEntity other) {
          boolean flag = super.wasKilled(world, other);
  
@@ -19,16 +19,10 @@ index f0bad2264df3a4b4631d66dad46ec03470a206ee..23fe7c324b8faca954dbef1a5703db6a
 -            Villager entityvillager = (Villager) other;
 -
 -            if (world.getDifficulty() != Difficulty.HARD && this.random.nextBoolean()) {
-+        // Paper start
-+        if (level.paperConfig().entities.behavior.zombieVillagerInfectionChance != 0.0 && (level.paperConfig().entities.behavior.zombieVillagerInfectionChance != -1.0 || world.getDifficulty() == Difficulty.NORMAL || world.getDifficulty() == Difficulty.HARD) && other instanceof Villager) {
-+            if (level.paperConfig().entities.behavior.zombieVillagerInfectionChance == -1.0 && world.getDifficulty() != Difficulty.HARD && this.random.nextBoolean()) {
-                 return flag;
-             }
-+            if (level.paperConfig().entities.behavior.zombieVillagerInfectionChance != -1.0 && (this.random.nextDouble() * 100.0) > level.paperConfig().entities.behavior.zombieVillagerInfectionChance) {
-+                return flag;
-+            } // Paper end
-+
-+            Villager entityvillager = (Villager) other;
+-                return flag;
+-            }
++        final double fallbackChance = world.getDifficulty() == Difficulty.HARD ? 1d : world.getDifficulty() == Difficulty.NORMAL ? 0.5d : 0d; // Paper
++        if (this.random.nextDouble() < world.paperConfig().entities.behavior.zombieVillagerInfectionChance.or(fallbackChance) && other instanceof Villager entityvillager) { // Paper
              // CraftBukkit start
              flag = Zombie.zombifyVillager(world, entityvillager, this.blockPosition(), this.isSilent(), CreatureSpawnEvent.SpawnReason.INFECTION) == null;
          }

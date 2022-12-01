@@ -19,7 +19,7 @@ index b6b077262132be3b30f81a2a6c9288afbd11c358..18949b866cd8da3825b730a7d0545bd8
      implementation("org.ow2.asm:asm:9.4")
 @@ -26,6 +27,7 @@ dependencies {
      testImplementation("org.mockito:mockito-core:4.9.0") // Paper - switch to mockito
-     implementation("org.spongepowered:configurate-yaml:4.1.2") // Paper - config files
+     implementation("org.spongepowered:configurate-yaml:4.2.0-SNAPSHOT") // Paper - config files
      implementation("commons-lang:commons-lang:2.6")
 +    implementation("net.fabricmc:mapping-io:0.3.0") // Paper - needed to read mappings for stacktrace deobfuscation
      runtimeOnly("org.xerial:sqlite-jdbc:3.41.0.0")

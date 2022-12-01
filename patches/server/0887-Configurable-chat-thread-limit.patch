@@ -22,22 +22,14 @@ is actually processed, this is honestly really just exposed for the misnomers or
 who just wanna ensure that this won't grow over a specific size if chat gets stupidly active
 
 diff --git a/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java b/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java
-index 52b02cb1f02d1c65b840f38cfc8baee500aa2259..8d442c5a498ecf288a0cc0c54889c6e2fda849ce 100644
+index 2b6b834303970ce260f27dc31eddeccde96ae89a..681616cffb5f2aa4f61870bf2b984bfb0c8a7069 100644
 --- a/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java
 +++ b/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java
-@@ -254,13 +254,26 @@ public class GlobalConfiguration extends ConfigurationPart {
-     public Misc misc;
+@@ -276,7 +276,18 @@ public class GlobalConfiguration extends ConfigurationPart {
  
-     public class Misc extends ConfigurationPart {
-+
-+        public ChatThreads chatThreads;
-         public class ChatThreads extends ConfigurationPart.Post {
-             private int chatExecutorCoreSize = -1;
-             private int chatExecutorMaxSize = -1;
- 
-             @Override
-             public void postProcess() {
--                // TODO: FILL
+             @PostProcess
+             private void postProcess() {
+-                // TODO: fill in separate patch
 +                //noinspection ConstantConditions
 +                if (net.minecraft.server.MinecraftServer.getServer() == null) return; // In testing env, this will be null here
 +                int _chatExecutorMaxSize = (chatExecutorMaxSize <= 0) ? Integer.MAX_VALUE : chatExecutorMaxSize; // This is somewhat dumb, but, this is the default, do we cap this?;
