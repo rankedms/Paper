@@ -14,7 +14,7 @@ public org.spigotmc.SpigotWorldConfig getString(Ljava/lang/String;Ljava/lang/Str
 public net.minecraft.world.level.NaturalSpawner SPAWNING_CATEGORIES
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index f3f20b34a3ebcbb75004003892e903ee4fd0edd3..d8da21801eda8ea5d04c8eb2941bbef968cb7951 100644
+index 229a9d514a9c97b29d891bfb16b09b24eaa0c4a3..231dd68b611e6570a571c11de018d849e131dec0 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -13,6 +13,7 @@ dependencies {
@@ -4421,10 +4421,10 @@ index 0000000000000000000000000000000000000000..70cc7b45e7355f6c8476a74a070f1266
 +    }
 +}
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index e7240acad17dc9c0d93f2792cc0d90c1855ac436..35e7f8e7b19c217fa5f3f55abb0f8b9cd6b16f18 100644
+index 1b2ec70b244cb43bbce218ff1aaa16bb4b640ed9..29269596b94b68f441355202b74c735ebfd44c71 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
-@@ -131,6 +131,10 @@ public class Main {
+@@ -142,6 +142,10 @@ public class Main {
              dedicatedserversettings.forceSave();
              Path path2 = Paths.get("eula.txt");
              Eula eula = new Eula(path2);
@@ -4435,7 +4435,7 @@ index e7240acad17dc9c0d93f2792cc0d90c1855ac436..35e7f8e7b19c217fa5f3f55abb0f8b9c
  
              if (optionset.has("initSettings")) { // CraftBukkit
                  // CraftBukkit start - SPIGOT-5761: Create bukkit.yml and commands.yml if not present
-@@ -165,7 +169,7 @@ public class Main {
+@@ -176,7 +180,7 @@ public class Main {
              }
  
              File file = (File) optionset.valueOf("universe"); // CraftBukkit
