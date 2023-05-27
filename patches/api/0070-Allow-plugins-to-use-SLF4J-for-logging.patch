@@ -14,10 +14,10 @@ it without having to shade it in the plugin and going through
 several layers of logging abstraction.
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 22b65c3ad4ed6e19b88a51a2e001f0e5846d9ae6..149f9088fe806467656e8b1c4157df60fda69ba7 100644
+index d797933de107c32c616d9ca8f7545de085788383..e02728223b7dcbf4d3a0f2cb6b62b49a40a3c482 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
-@@ -9,6 +9,8 @@ java {
+@@ -10,6 +10,8 @@ java {
  }
  
  val adventureVersion = "4.14.0"
@@ -26,7 +26,7 @@ index 22b65c3ad4ed6e19b88a51a2e001f0e5846d9ae6..149f9088fe806467656e8b1c4157df60
  val apiAndDocs: Configuration by configurations.creating {
      attributes {
          attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category.DOCUMENTATION))
-@@ -42,6 +44,8 @@ dependencies {
+@@ -43,6 +45,8 @@ dependencies {
      apiAndDocs("net.kyori:adventure-text-serializer-legacy")
      apiAndDocs("net.kyori:adventure-text-serializer-plain")
      apiAndDocs("net.kyori:adventure-text-logger-slf4j")
@@ -35,7 +35,7 @@ index 22b65c3ad4ed6e19b88a51a2e001f0e5846d9ae6..149f9088fe806467656e8b1c4157df60
  
      implementation("org.ow2.asm:asm:9.4")
      implementation("org.ow2.asm:asm-commons:9.4")
-@@ -112,7 +116,9 @@ tasks.withType<Javadoc> {
+@@ -129,7 +133,9 @@ tasks.withType<Javadoc> {
          "https://jd.advntr.dev/text-serializer-gson/$adventureVersion/",
          "https://jd.advntr.dev/text-serializer-legacy/$adventureVersion/",
          "https://jd.advntr.dev/text-serializer-plain/$adventureVersion/",

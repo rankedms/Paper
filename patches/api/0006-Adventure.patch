@@ -7,10 +7,10 @@ Co-authored-by: zml <zml@stellardrift.ca>
 Co-authored-by: Jake Potrebic <jake.m.potrebic@gmail.com>
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 3dec6ab39000edd3e90d1bf734d24cc779ce0e3b..cbab63d2f3b045f6193f5a3422ae4b5509d3003b 100644
+index 7948cc9a1c2a1e68632fb29dd8e1724935529bbb..441a22739e6c3aaf614d0f7d49af5fcb4bbfc6e8 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
-@@ -8,13 +8,26 @@ java {
+@@ -9,13 +9,26 @@ java {
      withJavadocJar()
  }
  
@@ -38,7 +38,7 @@ index 3dec6ab39000edd3e90d1bf734d24cc779ce0e3b..cbab63d2f3b045f6193f5a3422ae4b55
      api("org.yaml:snakeyaml:2.0")
      api("org.joml:joml:1.10.5")
      // Paper start
-@@ -22,6 +35,13 @@ dependencies {
+@@ -23,6 +36,13 @@ dependencies {
          isTransitive = false // includes junit
      }
      api("it.unimi.dsi:fastutil:8.5.6")
@@ -52,7 +52,7 @@ index 3dec6ab39000edd3e90d1bf734d24cc779ce0e3b..cbab63d2f3b045f6193f5a3422ae4b55
      // Paper end
  
      compileOnly("org.apache.maven:maven-resolver-provider:3.8.5")
-@@ -82,10 +102,26 @@ tasks.withType<Javadoc> {
+@@ -99,10 +119,26 @@ tasks.withType<Javadoc> {
          "https://guava.dev/releases/31.1-jre/api/docs/",
          "https://javadoc.io/doc/org.yaml/snakeyaml/2.0/",
          "https://javadoc.io/doc/org.jetbrains/annotations/$annotationsVersion/", // Paper - we don't want Java 5 annotations
